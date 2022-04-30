@@ -60,12 +60,21 @@ async function run() {
         })
 
         // Posting data for adding new item
-        app.post('/item', async (req, res) => {
+        app.post('/items', async (req, res) => {
             const newItem = req.body;
             console.log('adding new item', newItem);
             const result = await serviceCollection.insertOne(newItem);
             res.send(result)
         });
+
+        //myitems loading from server depending on email
+        app.get('/myitems', async (req, res) => {
+            const email = req.query.email;
+            const query = { email: email };
+            const cursor = serviceCollection.find(query);
+            const service = await cursor.toArray();
+            res.send(service);
+        })
 
 
     }
