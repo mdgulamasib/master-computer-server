@@ -35,6 +35,22 @@ async function run() {
             res.send(result);
         });
 
+        // update item quantity 
+        app.put('/item/:id', async (req, res) => {
+            const id = req.params.id;
+            const updateItem = req.body;
+            const filter = { _id: ObjectId(id) };
+            const options = { upsert: true };
+            const updatedDoc = {
+                $set: {
+                    quantity: updateItem.quantity,
+                }
+            };
+            const result = await serviceCollection.updateOne(filter, updatedDoc, options);
+            res.send(result);
+
+        })
+
 
     }
     finally {
