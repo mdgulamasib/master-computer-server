@@ -51,13 +51,21 @@ async function run() {
 
         })
 
-        // delete a user
+        // deleting item from all item list
         app.delete('/item/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
             const result = await serviceCollection.deleteOne(query);
             res.send(result);
         })
+
+        // Posting data for adding new item
+        app.post('/item', async (req, res) => {
+            const newItem = req.body;
+            console.log('adding new item', newItem);
+            const result = await serviceCollection.insertOne(newItem);
+            res.send(result)
+        });
 
 
     }
