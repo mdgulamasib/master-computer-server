@@ -80,7 +80,6 @@ async function run() {
         // Posting data for adding new item
         app.post('/items', async (req, res) => {
             const newItem = req.body;
-            console.log('adding new item', newItem);
             const result = await serviceCollection.insertOne(newItem);
             res.send(result)
         });
@@ -102,7 +101,6 @@ async function run() {
             });
             res.send({ accessToken });
         })
-
 
 
     }
