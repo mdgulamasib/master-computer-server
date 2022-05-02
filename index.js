@@ -87,10 +87,17 @@ async function run() {
         //myitems loading from server depending on email
         app.get('/myitems', JWTVerify, async (req, res) => {
             const email = req.query.email;
-            const query = { email: email };
-            const cursor = serviceCollection.find(query);
-            const service = await cursor.toArray();
-            res.send(service);
+            const decodedEmail = req.decoded.email;
+            console.log(decodedEmail)
+            if (email === decodedEmail) {
+                const query = { email: email };
+                const cursor = serviceCollection.find(query);
+                const service = await cursor.toArray();
+                await res.send(service);
+            }
+            else {
+                res.status(403).send({ message: 'forbidden access' })
+            }
         })
 
         // JWT TOken auth connection
