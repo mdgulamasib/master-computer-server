@@ -88,7 +88,7 @@ async function run() {
         app.get('/myitems', JWTVerify, async (req, res) => {
             const email = req.query.email;
             const decodedEmail = req.decoded.email;
-            console.log(decodedEmail)
+            console.log(decodedEmail, email)
             if (email === decodedEmail) {
                 const query = { email: email };
                 const cursor = serviceCollection.find(query);
