@@ -11,9 +11,14 @@
 
 ### Key features 
 
-- Easy short API for communicating with client side 
-- Easy Database connection with MongoDB
-- And many more...
+-	It is an inventory management responsive web application 
+-	Users are able to navigate top products and information on home route.
+-	Users are able to increase/decrease available stock on update quantity route.
+-	Firebase auth is applied to manage user Log-In, Registration, and google Sign-In.
+-	Not verify user can’t process any sensitive operation and they will get logout.  
+-	Legal users are able to add items/remove items from manage inventory routes.
+-	User can see his items on my items route, he/she has power to delete items.
+-	JWT is implemented to protect unauthorize access to data from server.
 
 ### Technology used
 - Express 
